@@ -44,7 +44,7 @@ macro_rules! dll_main {
         #[allow(non_snake_case)]
         #[unsafe(no_mangle)]
         pub extern "system" fn DllMain(
-            $hinstance: HMODULE,
+            $hinstance: windows::Win32::Foundation::HMODULE,
             $reason: u32,
             $reserved: *mut ::core::ffi::c_void,
         ) -> i32 {
@@ -223,3 +223,4 @@ impl DllOps for Process {
         Ok(())
     }
 }
+
