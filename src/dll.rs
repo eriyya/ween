@@ -19,6 +19,8 @@ pub trait DllOps {
 
 impl DllOps for Process {
     fn load_dll(&self, path: &str) -> Result<(), DllError> {
+        unimplemented!("DLL injection is not implemented yet");
+
         self.ensure_valid()?;
 
         let dll_path = util::to_wide(path);
