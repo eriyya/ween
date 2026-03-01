@@ -1,7 +1,7 @@
 use crate::{Process, util};
 use core::ffi::c_void;
 use thiserror::Error;
-use windows::Win32::Foundation::{CloseHandle, WAIT_FAILED};
+use windows::Win32::Foundation::{CloseHandle, HMODULE, WAIT_FAILED};
 use windows::Win32::System::Diagnostics::Debug::WriteProcessMemory;
 use windows::Win32::System::LibraryLoader::{GetModuleHandleW, GetProcAddress};
 use windows::Win32::System::Memory::{
@@ -44,7 +44,7 @@ macro_rules! dll_main {
         #[allow(non_snake_case)]
         #[unsafe(no_mangle)]
         pub extern "system" fn DllMain(
-            $hinstance: *mut ::core::ffi::c_void,
+            $hinstance: HMODULE,
             $reason: u32,
             $reserved: *mut ::core::ffi::c_void,
         ) -> i32 {
