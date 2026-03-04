@@ -1,7 +1,7 @@
 use crate::{Process, util};
 use core::ffi::c_void;
 use thiserror::Error;
-use windows::Win32::Foundation::{CloseHandle, HMODULE, WAIT_FAILED};
+use windows::Win32::Foundation::{CloseHandle, WAIT_FAILED};
 use windows::Win32::System::Diagnostics::Debug::WriteProcessMemory;
 use windows::Win32::System::LibraryLoader::{GetModuleHandleW, GetProcAddress};
 use windows::Win32::System::Memory::{
@@ -223,4 +223,3 @@ impl DllOps for Process {
         Ok(())
     }
 }
-

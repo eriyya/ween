@@ -1,11 +1,1 @@
-## process
-
-Just some personal helpers around the Win32 API
-
-## Build
-
-nothing special
-
-```
-cargo build --release
-```
+Just some personal helpers that I don't want to write again.
