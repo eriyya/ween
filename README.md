@@ -1,1 +1,1 @@
-Just some personal helpers that I don't want to write again.
+Just some stuff for my personal use

@@ -1,4 +1,5 @@
-use crate::{Process, util};
+use crate::process::Process;
+use crate::util;
 use core::ffi::c_void;
 use thiserror::Error;
 use windows::Win32::Foundation::{CloseHandle, WAIT_FAILED};
@@ -12,18 +13,7 @@ use windows::Win32::System::Threading::{
 };
 use windows::core::{s, w};
 
-/// Defines the Windows `DllMain` entrypoint and injects the provided block.
-///
-/// The block is inserted directly into `DllMain`.
-///
-/// For access to entrypoint arguments, use the parameterized form:
-/// `dll_main!(|hinstance, reason, reserved| { ... })`.
-/// The generated argument types are:
-/// - `hinstance: *mut c_void`
-/// - `reason: u32`
-/// - `reserved: *mut c_void`
-///
-/// The generated function returns `BOOL(1)` unless the block returns early.
+/// Defines the Windows `DllMain` entrypoint and inserts the provided block.
 ///
 /// # Example
 /// ```
@@ -62,7 +52,7 @@ pub enum DllError {
     DllLoad(String),
 
     #[error(transparent)]
-    ProcessError(#[from] crate::ProcessError),
+    ProcessError(#[from] crate::process::ProcessError),
 }
 
 pub trait DllOps {
